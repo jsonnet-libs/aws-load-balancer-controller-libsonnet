@@ -22,8 +22,6 @@ permalink: /2.3/elbv2/v1beta1/ingressClassParams/
   * [`fn withGeneration(generation)`](#fn-metadatawithgeneration)
   * [`fn withLabels(labels)`](#fn-metadatawithlabels)
   * [`fn withLabelsMixin(labels)`](#fn-metadatawithlabelsmixin)
-  * [`fn withManagedFields(managedFields)`](#fn-metadatawithmanagedfields)
-  * [`fn withManagedFieldsMixin(managedFields)`](#fn-metadatawithmanagedfieldsmixin)
   * [`fn withName(name)`](#fn-metadatawithname)
   * [`fn withNamespace(namespace)`](#fn-metadatawithnamespace)
   * [`fn withOwnerReferences(ownerReferences)`](#fn-metadatawithownerreferences)
@@ -40,11 +38,22 @@ permalink: /2.3/elbv2/v1beta1/ingressClassParams/
   * [`fn withTagsMixin(tags)`](#fn-specwithtagsmixin)
   * [`obj spec.group`](#obj-specgroup)
     * [`fn withName(name)`](#fn-specgroupwithname)
+  * [`obj spec.loadBalancerAttributes`](#obj-specloadbalancerattributes)
+    * [`fn withKey(key)`](#fn-specloadbalancerattributeswithkey)
+    * [`fn withValue(value)`](#fn-specloadbalancerattributeswithvalue)
   * [`obj spec.namespaceSelector`](#obj-specnamespaceselector)
     * [`fn withMatchExpressions(matchExpressions)`](#fn-specnamespaceselectorwithmatchexpressions)
     * [`fn withMatchExpressionsMixin(matchExpressions)`](#fn-specnamespaceselectorwithmatchexpressionsmixin)
     * [`fn withMatchLabels(matchLabels)`](#fn-specnamespaceselectorwithmatchlabels)
     * [`fn withMatchLabelsMixin(matchLabels)`](#fn-specnamespaceselectorwithmatchlabelsmixin)
+    * [`obj spec.namespaceSelector.matchExpressions`](#obj-specnamespaceselectormatchexpressions)
+      * [`fn withKey(key)`](#fn-specnamespaceselectormatchexpressionswithkey)
+      * [`fn withOperator(operator)`](#fn-specnamespaceselectormatchexpressionswithoperator)
+      * [`fn withValues(values)`](#fn-specnamespaceselectormatchexpressionswithvalues)
+      * [`fn withValuesMixin(values)`](#fn-specnamespaceselectormatchexpressionswithvaluesmixin)
+  * [`obj spec.tags`](#obj-spectags)
+    * [`fn withKey(key)`](#fn-spectagswithkey)
+    * [`fn withValue(value)`](#fn-spectagswithvalue)
 
 ## Fields
 
@@ -159,24 +168,6 @@ withLabelsMixin(labels)
 ```
 
 "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels"
-
-**Note:** This function appends passed data to existing values
-
-### fn metadata.withManagedFields
-
-```ts
-withManagedFields(managedFields)
-```
-
-"ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object."
-
-### fn metadata.withManagedFieldsMixin
-
-```ts
-withManagedFieldsMixin(managedFields)
-```
-
-"ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object."
 
 **Note:** This function appends passed data to existing values
 
@@ -306,6 +297,26 @@ withName(name)
 
 "Name is the name of IngressGroup."
 
+## obj spec.loadBalancerAttributes
+
+"LoadBalancerAttributes define the custom attributes to LoadBalancers for all Ingress that that belong to IngressClass with this IngressClassParams."
+
+### fn spec.loadBalancerAttributes.withKey
+
+```ts
+withKey(key)
+```
+
+"The key of the attribute."
+
+### fn spec.loadBalancerAttributes.withValue
+
+```ts
+withValue(value)
+```
+
+"The value of the attribute."
+
 ## obj spec.namespaceSelector
 
 "NamespaceSelector restrict the namespaces of Ingresses that are allowed to specify the IngressClass with this IngressClassParams. * if absent or present but empty, it selects all namespaces."
@@ -345,3 +356,61 @@ withMatchLabelsMixin(matchLabels)
 "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
 
 **Note:** This function appends passed data to existing values
+
+## obj spec.namespaceSelector.matchExpressions
+
+"matchExpressions is a list of label selector requirements. The requirements are ANDed."
+
+### fn spec.namespaceSelector.matchExpressions.withKey
+
+```ts
+withKey(key)
+```
+
+"key is the label key that the selector applies to."
+
+### fn spec.namespaceSelector.matchExpressions.withOperator
+
+```ts
+withOperator(operator)
+```
+
+"operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
+
+### fn spec.namespaceSelector.matchExpressions.withValues
+
+```ts
+withValues(values)
+```
+
+"values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
+
+### fn spec.namespaceSelector.matchExpressions.withValuesMixin
+
+```ts
+withValuesMixin(values)
+```
+
+"values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
+
+**Note:** This function appends passed data to existing values
+
+## obj spec.tags
+
+"Tags defines list of Tags on AWS resources provisioned for Ingresses that belong to IngressClass with this IngressClassParams."
+
+### fn spec.tags.withKey
+
+```ts
+withKey(key)
+```
+
+"The key of the tag."
+
+### fn spec.tags.withValue
+
+```ts
+withValue(value)
+```
+
+"The value of the tag."
