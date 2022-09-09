@@ -47,7 +47,7 @@
     apiVersion: 'elbv2.k8s.aws/v1beta1',
     kind: 'IngressClassParams',
   } + self.metadata.withName(name=name) + self.metadata.withAnnotations(annotations={
-    'tanka.dev/namespaced': 'true',
+    'tanka.dev/namespaced': 'false',
   }),
   '#spec':: d.obj(help='"IngressClassParamsSpec defines the desired state of IngressClassParams"'),
   spec: {
